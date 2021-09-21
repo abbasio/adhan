@@ -6,6 +6,9 @@
     "background": {
         "service_worker": "main.js"
     },
+    "permissions": [
+        "geolocation"
+    ],
     "action": {
         "default_popup": "popup.html"
     }   
