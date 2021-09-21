@@ -4,13 +4,20 @@ const month = today.getMonth() + 1;
 const dateText = document.querySelector('#date');
 const timingsText = document.querySelector('#timings');
 
-
 async function getTimes(){
     const apiURL = `http://api.aladhan.com/v1/calendarByCity?city=New York&country=United States&method=2&month=${month}&year=2021`;
     const response = await fetch(apiURL, {mode: 'cors'});
     const timeData = await response.json();
-    timingsText.textContent = JSON.stringify(timeData.data[date].timings);
+    const timeObject = timeData.data[date].timings;
     dateText.textContent = timeData.data[date].date.readable;
+    for (let key in timeObject){
+        const newDiv = document.createElement('div');
+        newDiv.id = "time"
+        newDiv.textContent = `${key} : ${(timeObject[key]).replace('(EDT)', '')}`
+        timingsText.appendChild(newDiv);
+        console.log(key)
+        console.log(timeObject[key])
+    }
 }
 
 getTimes();
