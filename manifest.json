@@ -1,0 +1,10 @@
+{
+    "name": "Minaret",
+    "description": "Keep track of prayer times",
+    "version": "1.0",
+    "manifest_version": 3,
+    "background": {
+        "service_worker": "main.js"
+    }
+
+}
