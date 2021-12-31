@@ -2,6 +2,7 @@
 const today = new Date();
 const date = today.getDate() - 1;
 const month = today.getMonth() + 1;
+const year = today.getFullYear();
 const dateText = document.querySelector('#date');
 const timingsText = document.querySelector('#timings');
 
@@ -10,7 +11,7 @@ navigator.geolocation.getCurrentPosition((position) => {
     const latitude = position.coords.latitude;
     const longitude = position.coords.longitude;
     async function getTimes() {
-        const apiURL = `http://api.aladhan.com/v1/calendar?latitude=${latitude}&longitude=${longitude}&method=2&month${month}&year=2021`;
+        const apiURL = `http://api.aladhan.com/v1/calendar?latitude=${latitude}&longitude=${longitude}&method=2&month${month}&year=${year}`;
         const response = await fetch(apiURL, { mode: 'cors' });
         const timeData = await response.json();
         const timeObject = timeData.data[date].timings;
